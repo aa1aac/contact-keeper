@@ -7,12 +7,15 @@ const app = express();
 // connect database
 connectDB();
 
+app.use(express.json({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
+
 const PORT = process.env.PORT || 5000;
 
-// 6.5
+// 7.1
 
 app.get("/", (req, res) => {
-  res.json("hello world");
+  res.send(res.body);
 });
 
 app.use("/api/users", require("./routes/users"));
